@@ -1,0 +1,26 @@
+executionFrameworkSpec:
+  name: 'standalone'
+  segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner'
+  segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner'
+  segmentUriPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentUriPushJobRunner'
+jobType: SegmentCreationAndTarPush
+inputDirURI: '/tmp/calcs/rawdata/'
+includeFileNamePattern: 'glob:**/*.csv'
+outputDirURI: '/tmp/calcs/segments/'
+overwriteOutput: true
+pinotFSSpecs:
+  - scheme: file
+    className: org.apache.pinot.spi.filesystem.LocalPinotFS
+recordReaderSpec:
+  dataFormat: 'csv'
+  className: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReader'
+  configClassName: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReaderConfig'
+  configs:
+    multiValueDelimiter: '—'
+    header: key,num0,num1,num2,num3,num4,str0,str1,str2,str3,int0,int1,int2,int3,bool0,bool1,bool2,bool3,date0,date1,date2,date3,time0,time1,datetime0,datetime1,zzz
+tableSpec:
+  tableName: 'calcs'
+  schemaURI: 'http://localhost:9000/tables/calcs/schema'
+  tableConfigURI: 'http://localhost:9000/tables/calcs'
+pinotClusterSpecs:
+  - controllerURI: 'http://localhost:9000'

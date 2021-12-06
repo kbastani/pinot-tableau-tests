@@ -1,0 +1,26 @@
+executionFrameworkSpec:
+  name: 'standalone'
+  segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner'
+  segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner'
+  segmentUriPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentUriPushJobRunner'
+jobType: SegmentCreationAndTarPush
+inputDirURI: '/tmp/staples/rawdata/'
+includeFileNamePattern: 'glob:**/*.csv'
+outputDirURI: '/tmp/staples/segments/'
+overwriteOutput: true
+pinotFSSpecs:
+  - scheme: file
+    className: org.apache.pinot.spi.filesystem.LocalPinotFS
+recordReaderSpec:
+  dataFormat: 'csv'
+  className: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReader'
+  configClassName: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReaderConfig'
+  configs:
+    multiValueDelimiter: '—'
+    header: Item_Count,Ship_Priority,Order_Priority,Order_Status,Order_Quantity,Sales_Total,Discount,Tax_Rate,Ship_Mode,Fill_Time,Gross_Profit,Price,Ship_Handle_Cost,Employee_Name,Employee_Dept,Manager_Name,Employee_Yrs_Exp,Employee_Salary,Customer_Name,Customer_State,Call_Center_Region,Customer_Balance,Customer_Segment,Prod_Type1,Prod_Type2,Prod_Type3,Prod_Type4,Product_Name,Product_Container,Ship_Promo,Supplier_Name,Supplier_Balance,Supplier_Region,Supplier_State,Order_ID,Order_Year,Order_Month,Order_Day,Order_Date,Order_Quarter,Product_Base_Margin,Product_ID,Receive_Time,Received_Date,Ship_Date,Ship_Charge,Total_Cycle_Time,Product_In_Stock,PID,Market_Segment
+tableSpec:
+  tableName: 'staples'
+  schemaURI: 'http://localhost:9000/tables/staples/schema'
+  tableConfigURI: 'http://localhost:9000/tables/staples'
+pinotClusterSpecs:
+  - controllerURI: 'http://localhost:9000'
