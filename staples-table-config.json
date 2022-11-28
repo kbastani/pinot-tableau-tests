@@ -1,9 +1,9 @@
 {
-   "tableName":"staples",
+   "tableName":"Staples",
    "segmentsConfig":{
       "segmentAssignmentStrategy":"BalanceNumSegmentAssignmentStrategy",
       "segmentPushType":"APPEND",
-      "schemaName":"staples",
+      "schemaName":"Staples",
       "replication":1
    },
    "tableIndexConfig":{

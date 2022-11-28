@@ -1,5 +1,5 @@
 {
-   "schemaName":"staples",
+   "schemaName":"Staples",
    "dimensionFieldSpecs":[
       {
          "name":"Item_Count",

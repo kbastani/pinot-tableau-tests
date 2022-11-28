@@ -24,3 +24,8 @@ tableSpec:
   tableConfigURI: 'http://localhost:9000/tables/batters'
 pinotClusterSpecs:
   - controllerURI: 'http://localhost:9000'
+pushJobSpec:
+  pushParallelism: 2
+  pushAttempts: 2
+  pushRetryIntervalMillis: 1000
+  segmentUriPrefix: 'file://'

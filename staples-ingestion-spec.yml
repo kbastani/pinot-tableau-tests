@@ -19,8 +19,13 @@ recordReaderSpec:
     multiValueDelimiter: '—'
     header: Item_Count,Ship_Priority,Order_Priority,Order_Status,Order_Quantity,Sales_Total,Discount,Tax_Rate,Ship_Mode,Fill_Time,Gross_Profit,Price,Ship_Handle_Cost,Employee_Name,Employee_Dept,Manager_Name,Employee_Yrs_Exp,Employee_Salary,Customer_Name,Customer_State,Call_Center_Region,Customer_Balance,Customer_Segment,Prod_Type1,Prod_Type2,Prod_Type3,Prod_Type4,Product_Name,Product_Container,Ship_Promo,Supplier_Name,Supplier_Balance,Supplier_Region,Supplier_State,Order_ID,Order_Year,Order_Month,Order_Day,Order_Date,Order_Quarter,Product_Base_Margin,Product_ID,Receive_Time,Received_Date,Ship_Date,Ship_Charge,Total_Cycle_Time,Product_In_Stock,PID,Market_Segment
 tableSpec:
-  tableName: 'staples'
-  schemaURI: 'http://localhost:9000/tables/staples/schema'
-  tableConfigURI: 'http://localhost:9000/tables/staples'
+  tableName: 'Staples'
+  schemaURI: 'http://localhost:9000/tables/Staples/schema'
+  tableConfigURI: 'http://localhost:9000/tables/Staples'
 pinotClusterSpecs:
   - controllerURI: 'http://localhost:9000'
+pushJobSpec:
+  pushParallelism: 2
+  pushAttempts: 2
+  pushRetryIntervalMillis: 1000
+  segmentUriPrefix: 'file://'
